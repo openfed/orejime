@@ -89,6 +89,9 @@ $orejime-theme-color-light: #aaa !default;
         left: 0;
         position: absolute;
         z-index: -1;
+        line {
+          color: $orejime-theme-color;
+        }
       }
     }
     @media (min-width: 990px) {
