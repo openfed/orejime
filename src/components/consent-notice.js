@@ -3,6 +3,14 @@ import {getPurposes} from '../utils/config'
 import {Close} from "./icons";
 
 export default class ConsentNotice extends React.Component {
+
+    constructor(props, context) {
+      super(props, context)
+      this.state = {
+        dark : props.isDark
+      }
+    }
+
     render() {
       const {
             config,
@@ -107,7 +115,7 @@ export default class ConsentNotice extends React.Component {
                 {manager.changed &&
                     <p className={ns('Notice-changes')}>{t(['consentNotice', 'changeDescription'])}</p>
                 }
-            </div>
+      </div>
         </div>
     }
 }
