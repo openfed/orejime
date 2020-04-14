@@ -1,0 +1,46 @@
+$orejime-dark-blue: #4098C1 !default;
+$orejime-dark-green: #00D63D !default;
+$orejime-dark-theme-bg: #4D4D4D !default;
+$orejime-dark-theme-color: #fff !default;
+$orejime-dark-theme-color-light: #B8B8B8 !default;
+
+$orejime-light-blue: #057EB6 !default;
+$orejime-light-green: #008A28 !default;
+$orejime-light-theme-bg: #fff !default;
+$orejime-light-theme-color: #000 !default;
+$orejime-light-theme-color-light: #aaa !default;
+
+$themes: (
+        default: (
+                orejime-blue: $orejime-light-blue,
+                orejime-green: $orejime-light-green,
+                orejime-theme-bg: $orejime-light-theme-bg,
+                orejime-theme-color: $orejime-light-theme-color,
+                orejime-theme-color-light: $orejime-light-theme-color-light
+        ),
+        dark: (
+                orejime-blue: $orejime-dark-blue,
+                orejime-green: $orejime-dark-green,
+                orejime-theme-bg: $orejime-dark-theme-bg,
+                orejime-theme-color: $orejime-dark-theme-color,
+                orejime-theme-color-light: $orejime-dark-theme-color-light
+        ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}

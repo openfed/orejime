@@ -6,7 +6,8 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isModalVisible: this.isModalVisible()
+            isModalVisible: this.isModalVisible(),
+            dark: this.props.config.theme === 'dark'
         }
         this.showModal = this.showModal.bind(this)
         this.hideModal = this.hideModal.bind(this)
@@ -77,13 +78,14 @@ export default class Main extends React.Component {
         const {config, t, manager, ns} = this.props
         const isNoticeVisible = this.isNoticeVisible()
         return (
-            <div className={ns('Main')}>
+            <div className={'theme ' + (this.state.dark ? 'theme--dark ' : 'theme--default ') + ns('Main')}>
                 <ConsentNoticeWrapper
                     key="notice"
                     t={t}
                     ns={ns}
                     isVisible={isNoticeVisible}
                     isMandatory={config.mustNotice || false}
+                    isDark={this.state.dark}
                     isModalVisible={this.state.isModalVisible}
                     config={config}
                     manager={manager}
@@ -91,10 +93,11 @@ export default class Main extends React.Component {
                     onSaveRequestAcceptAll={this.saveAndHideAcceptAll}
                     onDeclineRequest={this.declineAndHideAll}
                     onConfigRequest={this.showModal}
-                />
+        />
                 <ConsentModal
                     key="modal"
                     isOpen={this.state.isModalVisible}
+                    isDark={this.state.dark}
                     t={t}
                     ns={ns}
                     config={config}

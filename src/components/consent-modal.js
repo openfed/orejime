@@ -4,6 +4,14 @@ import Apps from './apps'
 import Dialog from './dialog'
 
 export default class ConsentModal extends React.Component {
+
+    constructor(props, context) {
+        super(props, context)
+        this.state = {
+            dark : props.isDark
+        }
+    }
+
     render() {
         const {isOpen, onHideRequest, onSaveRequest, config, manager, t, ns} = this.props
 
@@ -12,7 +20,7 @@ export default class ConsentModal extends React.Component {
         return <Dialog
             isOpen={isOpen}
             aria={{'labelledby': 'orejime-modal-title'}}
-            portalClassName={ns('ModalPortal')}
+            portalClassName={'theme ' + (this.state.dark ? 'theme--dark ' : 'theme--default ') + ns('ModalPortal')}
             overlayClassName={ns('ModalOverlay')}
             className={ns('ModalWrapper')}
             config={config}
