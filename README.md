@@ -162,8 +162,8 @@ var orejimeConfig = {
     
     // Optional. You can pass a 'dark' or 'light' string to change
     // the theme of both notice wrapper and modal dialog.
-    // defaults to 'light'
-    theme: 'dark',
+    // defaults to ''
+    theme: '',
 
     // Optional. Set Orejime in debug mode to have a few stuff
     // logged in the console, like warning about missing translations.
