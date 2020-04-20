@@ -7,13 +7,19 @@ export default class Main extends React.Component {
         super(props)
         this.state = {
             isModalVisible: this.isModalVisible(),
-            dark: this.props.config.theme === 'dark'
+            theme: this.validateTheme() ? this.props.config.theme : false
         }
         this.showModal = this.showModal.bind(this)
         this.hideModal = this.hideModal.bind(this)
         this.saveAndHideAcceptAll= this.saveAndHideAcceptAll.bind(this)
         this.saveAndHideAll = this.saveAndHideAll.bind(this)
         this.declineAndHideAll = this.declineAndHideAll.bind(this)
+    }
+
+    validateTheme() {
+        const {config} = this.props
+        const theme = ['light', 'dark']
+        return theme.includes(config.theme)
     }
 
     isModalVisible(userRequest) {
@@ -78,14 +84,14 @@ export default class Main extends React.Component {
         const {config, t, manager, ns} = this.props
         const isNoticeVisible = this.isNoticeVisible()
         return (
-            <div className={'theme ' + (this.state.dark ? 'theme--dark ' : 'theme--default ') + ns('Main')}>
+            <div className={'theme--' + (this.state.theme ? this.state.theme : 'default') + ' ' + ns('Main')}>
                 <ConsentNoticeWrapper
                     key="notice"
                     t={t}
                     ns={ns}
                     isVisible={isNoticeVisible}
                     isMandatory={config.mustNotice || false}
-                    isDark={this.state.dark}
+                    theme={this.state.theme}
                     isModalVisible={this.state.isModalVisible}
                     config={config}
                     manager={manager}
@@ -97,7 +103,7 @@ export default class Main extends React.Component {
                 <ConsentModal
                     key="modal"
                     isOpen={this.state.isModalVisible}
-                    isDark={this.state.dark}
+                    theme={this.state.theme}
                     t={t}
                     ns={ns}
                     config={config}

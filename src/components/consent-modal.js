@@ -8,7 +8,7 @@ export default class ConsentModal extends React.Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
-            dark : props.isDark
+            theme : props.theme
         }
     }
 
@@ -16,11 +16,10 @@ export default class ConsentModal extends React.Component {
         const {isOpen, onHideRequest, onSaveRequest, config, manager, t, ns} = this.props
 
         const isAlert = config.mustConsent && (!manager.confirmed || manager.changed)
-
         return <Dialog
             isOpen={isOpen}
             aria={{'labelledby': 'orejime-modal-title'}}
-            portalClassName={'theme ' + (this.state.dark ? 'theme--dark ' : 'theme--default ') + ns('ModalPortal')}
+            portalClassName={'theme--' + (this.state.theme ? this.state.theme : 'default') + ' ' + ns('ModalPortal')}
             overlayClassName={ns('ModalOverlay')}
             className={ns('ModalWrapper')}
             config={config}
