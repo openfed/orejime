@@ -7,7 +7,7 @@ export default class ConsentNotice extends React.Component {
     constructor(props, context) {
       super(props, context)
       this.state = {
-        dark : props.isDark
+        theme : props.theme
       }
     }
 

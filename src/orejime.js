@@ -54,7 +54,7 @@ export const defaultConfig = {
     mustNotice: false,
     implicitConsent: false,
     logo: false,
-    theme: 'light',
+    theme: '',
     lang: language(),
     translations: {},
     apps: {},

@@ -52,8 +52,8 @@ var config = {
     }),
     new webpack.BannerPlugin({
       banner: packageInfo.name + ' v' + packageInfo.version + ' - ' + packageInfo.license + ' license, '
-        + 'original work Copyright (c) 2018 DPKit, '
-        + 'modified work Copyright (c) 2019 Empreinte Digitale, '
+        + 'original work Copyright (c) 2019 Empreinte Digitale, '
+        + 'modified work Copyright (c) 2020 OpenFed, '
         + 'all rights reserved.'
     })
   ]
