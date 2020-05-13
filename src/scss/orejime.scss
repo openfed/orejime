@@ -290,7 +290,6 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
 .orejime-AppToggles-item {
   display: inline;
 }
-
 // Default and dark theme styles. Top level.
 @each $theme, $map in $themes {
   .theme--#{$theme} {
@@ -328,11 +327,8 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
 
     .orejime-Button--info {
       border: $orejime-theme-border;
-      background: #fff;
+      background: transparent;
       text-decoration: none;
-      &:hover,&:focus {
-        border-color: #000;
-      }
     }
 
     .orejime-AppToggles-enableAll {
@@ -351,7 +347,6 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
       button {
         cursor: pointer;
       }
-
       @media (min-width: 990px) {
         box-shadow: $orejime-box-shadow;
         border-radius: $orejime-border-radius;
@@ -512,7 +507,9 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
       position: absolute;
       top: 1em;
       right: 1em;
-      &:hover,&:focus {
+
+      &:focus,
+      &:hover {
         border: 1px solid black;
       }
     }
@@ -697,9 +694,7 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
     }
   }
 }
-
 // Default and dark theme styles. Lower levels.
-
 .orejime-Button {
   @include themed() {
     color: t('orejime-theme-bg');
@@ -718,6 +713,7 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
 .orejime-Button--save {
   @include themed() {
     background: t('orejime-blue');
+    color: #fff;
   }
 
   &:focus,
@@ -752,7 +748,9 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
   &:hover {
     @include themed() {
       color: darken(t('orejime-theme-color-light-text'),100%);
+      border-color: darken(t('orejime-theme-color-light-text'),100%);
     }
+    background: #fff;
   }
 }
 
@@ -761,6 +759,7 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
     background: t('orejime-blue');
   }
   color: #fff !important;
+
   &:focus,
   &:hover {
     @include themed() {
@@ -775,6 +774,7 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
   }
   color: #000 !important;
   border: 0 !important;
+
   &:focus,
   &:hover {
     @include themed() {
@@ -790,11 +790,13 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
 }
 
 .orejime-Modal-closeButton {
-  &:hover,&:focus {
+  &:focus,
+  &:hover {
     @include themed() {
       border: 1px solid t('orejime-theme-color');
     }
   }
+
   .orejime-CloseIcon {
     line {
       @include themed() {
