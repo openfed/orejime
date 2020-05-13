@@ -1,8 +1,8 @@
 @import 'color-themes';
 $orejime-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19) !default;
 $orejime-border-radius: 0 !default;
-$orejime-btn-border-radius: 0.25em;
-$orejime-theme-border: 1px solid #555 !default; // micro css reset for everything orejime related
+$orejime-btn-border-radius: 2em;
+$orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everything orejime related
 
 [class^="orejime-"] {
   margin: 0;
@@ -12,7 +12,6 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
   font-size: inherit;
   color: inherit;
   vertical-align: baseline;
-  cursor: default;
   float: none;
   width: auto;
   text-align: left;
@@ -38,6 +37,7 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
 
   &[disabled] {
     opacity: 0.75;
+    cursor: default;
   }
 }
 
@@ -135,6 +135,7 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
   position: absolute;
   top: 1em;
   right: 1em;
+  cursor: pointer;
 }
 
 .orejime-CloseIcon {
@@ -160,6 +161,7 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
   &:focus,
   &:hover {
     color: inherit;
+    text-decoration: underline;
   }
 
   &:focus,
@@ -301,7 +303,6 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
       font-family: inherit;
       font-size: 16px;
       vertical-align: baseline;
-      cursor: default;
       float: none;
       width: auto;
       text-align: left;
@@ -314,13 +315,9 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
       padding: 0.5rem 1em;
       margin-right: 0.5em;
       border: 1px solid transparent;
-      line-height: 2em;
+      line-height: 1.3em;
       min-width: auto !important;
-
-      &:focus,
-      &:hover {
-        text-decoration: underline;
-      }
+      text-decoration: none;
     }
 
     .orejime-Button--accept,
@@ -329,8 +326,16 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
     }
 
     .orejime-Button--info {
-      color: #fff;
+      border: $orejime-theme-border;
+      background: #fff;
       text-decoration: none;
+      &:hover,&:focus {
+        border-color: #000;
+      }
+    }
+
+    .orejime-AppToggles-enableAll {
+      border: 0;
     }
 
     .orejime-Notice {
@@ -346,19 +351,6 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
         cursor: pointer;
       }
 
-      .orejime-Modal-closeButton {
-        display: block;
-        height: 1em;
-        width: 1em;
-        background: transparent;
-
-        .orejime-CloseIcon {
-          top: 0;
-          left: 0;
-          position: absolute;
-          z-index: -1;
-        }
-      }
       @media (min-width: 990px) {
         box-shadow: $orejime-box-shadow;
         border-radius: $orejime-border-radius;
@@ -445,17 +437,6 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
     .orejime-Notice-actions {
       display: block;
       width: 100%;
-
-      .orejime-Button--info {
-        background: transparent;
-        text-decoration: underline;
-
-        &:focus,
-        &:hover {
-          text-decoration: none;
-          background: transparent;
-        }
-      }
     }
 
     .orejime-Notice-actionItem {
@@ -520,15 +501,27 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
     }
 
     .orejime-Modal-closeButton {
-      border: none;
-      background: none;
-      color: inherit;
+      display: block;
+      height: 12px !important;
+      width: 12px !important;
+      padding: 12px !important;
+      background: transparent;
+      border-radius: 50%;
+      border: 1px solid transparent;
       position: absolute;
       top: 1em;
       right: 1em;
+      &:hover,&:focus {
+        border: 1px solid black;
+      }
     }
 
     .orejime-CloseIcon {
+      top: 6px !important;
+      left: 6px !important;
+      transform-origin: center center;
+      position: absolute;
+      z-index: 0;
       stroke: currentColor;
       width: 12px;
     }
@@ -672,6 +665,10 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
       text-align: center;
     }
 
+    .orejime-AppItem-label {
+      background: none !important;
+    }
+
     .orejime-AppItem-switch--disabled .orejime-AppItem-slider {
       cursor: default;
       opacity: 0.5;
@@ -708,7 +705,9 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
 
   &[disabled] {
     @include themed() {
-      background: t('orejime-theme-color-light');
+      background: t('orejime-theme-color-light') !important;
+      color: t('orejime-theme-color-light-text') !important;
+      border: 0 !important;
     }
   }
 }
@@ -722,7 +721,7 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
   &:focus,
   &:hover {
     @include themed() {
-      background: darken t('orejime-blue') 5%;
+      background: darken(t('orejime-blue'),10%) !important;
     }
   }
 }
@@ -730,25 +729,54 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
 .orejime-Button--decline {
   @include themed() {
     background: t('orejime-theme-color-light');
+    color: t('orejime-theme-color-light-text');
   }
 
   &:focus,
   &:hover {
     @include themed() {
-      background: darken t('orejime-theme-color-light') 5%;
+      background: darken(t('orejime-theme-color-light'),5%);
+      color: darken(t('orejime-theme-color-light-text'),15%);
     }
   }
 }
 
 .orejime-Button--info {
   @include themed() {
-    background: t('orejime-blue');
+    color: t('orejime-theme-color-light-text');
   }
 
   &:focus,
   &:hover {
     @include themed() {
-      background: darken t('orejime-blue') 5%;
+      color: darken(t('orejime-theme-color-light-text'),100%);
+    }
+  }
+}
+
+.orejime-AppToggles-enableAll {
+  @include themed() {
+    background: t('orejime-blue');
+  }
+  color: #fff !important;
+  &:focus,
+  &:hover {
+    @include themed() {
+      background: darken(t('orejime-blue'),10%);
+    }
+  }
+}
+
+.orejime-AppToggles-disableAll {
+  @include themed() {
+    background: t('orejime-cta');
+  }
+  color: #000 !important;
+  border: 0 !important;
+  &:focus,
+  &:hover {
+    @include themed() {
+      background: t('orejime-cta-hover');
     }
   }
 }
@@ -757,13 +785,18 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
   @include themed() {
     background: t('orejime-theme-bg');
   }
+}
 
-  .orejime-Modal-closeButton {
-    .orejime-CloseIcon {
-      line {
-        @include themed() {
-          color: t('orejime-theme-color');
-        }
+.orejime-Modal-closeButton {
+  &:hover,&:focus {
+    @include themed() {
+      border: 1px solid t('orejime-theme-color');
+    }
+  }
+  .orejime-CloseIcon {
+    line {
+      @include themed() {
+        color: t('orejime-theme-color');
       }
     }
   }
@@ -801,14 +834,6 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
   }
 }
 
-.orejime-Notice-actions {
-  .orejime-Button--info {
-    @include themed() {
-      color: t('orejime-blue');
-    }
-  }
-}
-
 .orejime-Modal {
   @include themed() {
     background: t('orejime-theme-bg');
@@ -820,14 +845,14 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
 
 .orejime-Modal-poweredByLink {
   @include themed() {
-    color: t('orejime-theme-color-light');
+    color: t('orejime-theme-color-light-text');
   }
 
   &:active,
   &:focus,
   &:hover {
     @include themed() {
-      color: t('orejime-theme-color-light');
+      color: darken(t('orejime-theme-color-light-text'),20%);
     }
   }
 }
@@ -849,20 +874,20 @@ $orejime-theme-border: 1px solid #555 !default; // micro css reset for everythin
 
 .orejime-AppItem-purposes {
   @include themed() {
-    color: t('orejime-theme-color-light');
+    color: t('orejime-theme-color-light-text');
   }
 }
 
 .orejime-AppItem-optOut,
 .orejime-AppItem-required {
   @include themed() {
-    color: t('orejime-theme-color-light');
+    color: t('orejime-theme-color-light-text');
   }
 }
 
 .orejime-AppItem-switch--disabled .orejime-AppItem-switchLabel {
   @include themed() {
-    color: t('orejime-theme-color-light');
+    color: t('orejime-theme-color-light-text');
   }
 }
 

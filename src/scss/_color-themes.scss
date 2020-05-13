@@ -1,29 +1,41 @@
 $orejime-dark-blue: #4098C1 !default;
 $orejime-dark-green: #00D63D !default;
+$orejime-dark-cta: #FFB81C !default;
+$orejime-dark-cta-hover: #FF9A19 !default;
 $orejime-dark-theme-bg: #000 !default;
 $orejime-dark-theme-color: #fff !default;
-$orejime-dark-theme-color-light: #B8B8B8 !default;
+$orejime-dark-theme-color-light: #F5F5F5 !default;
+$orejime-dark-theme-color-light-text: #6A7070 !default;
 
-$orejime-light-blue: #056C9C !default;
+$orejime-light-blue: #047A9C !default;
 $orejime-light-green: #316E2D !default;
+$orejime-light-cta: #FFB81C !default;
+$orejime-light-cta-hover: #FF9A19 !default;
 $orejime-light-theme-bg: #fff !default;
 $orejime-light-theme-color: #000 !default;
-$orejime-light-theme-color-light: #6B6B6B !default;
+$orejime-light-theme-color-light: #F5F5F5 !default;
+$orejime-light-theme-color-light-text: #6A7070 !default;
 
 $themes: (
         light: (
                 orejime-blue: $orejime-light-blue,
                 orejime-green: $orejime-light-green,
+                orejime-cta: $orejime-light-cta,
+                orejime-cta-hover: $orejime-light-cta-hover,
                 orejime-theme-bg: $orejime-light-theme-bg,
                 orejime-theme-color: $orejime-light-theme-color,
-                orejime-theme-color-light: $orejime-light-theme-color-light
+                orejime-theme-color-light: $orejime-light-theme-color-light,
+                orejime-theme-color-light-text: $orejime-light-theme-color-light-text
         ),
         dark: (
                 orejime-blue: $orejime-dark-blue,
                 orejime-green: $orejime-dark-green,
+                orejime-cta: $orejime-dark-cta,
+                orejime-cta-hover: $orejime-dark-cta-hover,
                 orejime-theme-bg: $orejime-dark-theme-bg,
                 orejime-theme-color: $orejime-dark-theme-color,
-                orejime-theme-color-light: $orejime-dark-theme-color-light
+                orejime-theme-color-light: $orejime-dark-theme-color-light,
+                orejime-theme-color-light-text: $orejime-dark-theme-color-light-text
         ),
 );
 
