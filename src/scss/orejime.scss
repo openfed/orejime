@@ -329,7 +329,7 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
       color: #fff;
     }
 
-    .orejime-Button--info {
+    .orejime-Button {
       border: $orejime-theme-border;
       background: transparent;
       text-decoration: none;
@@ -705,50 +705,6 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
 // Default and dark theme styles. Lower levels.
 .orejime-Button {
   @include themed() {
-    color: t('orejime-theme-bg');
-  }
-
-  &[disabled] {
-    @include themed() {
-      background: t('orejime-theme-color-light') !important;
-      color: t('orejime-theme-color-light-text') !important;
-      border: 0 !important;
-    }
-  }
-}
-
-.orejime-Button--accept,
-.orejime-Button--save {
-  @include themed() {
-    background: t('orejime-blue');
-    color: #fff;
-  }
-
-  &:focus,
-  &:hover {
-    @include themed() {
-      background: darken(t('orejime-blue'),10%) !important;
-    }
-  }
-}
-
-.orejime-Button--decline {
-  @include themed() {
-    background: t('orejime-theme-color-light');
-    color: t('orejime-theme-color-light-text');
-  }
-
-  &:focus,
-  &:hover {
-    @include themed() {
-      background: darken(t('orejime-theme-color-light'),5%);
-      color: darken(t('orejime-theme-color-light-text'),15%);
-    }
-  }
-}
-
-.orejime-Button--info {
-  @include themed() {
     color: t('orejime-theme-color-light-text');
   }
 
@@ -759,6 +715,14 @@ $orejime-theme-border: 1px solid #C7C7C7 !default; // micro css reset for everyt
       border-color: darken(t('orejime-theme-color-light-text'),100%);
     }
     background: #fff;
+  }
+
+  &[disabled] {
+    @include themed() {
+      background: t('orejime-theme-color-light') !important;
+      color: t('orejime-theme-color-light-text') !important;
+      border: 0 !important;
+    }
   }
 }
 
