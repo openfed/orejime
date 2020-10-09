@@ -68,6 +68,15 @@ export default class ConsentNotice extends React.Component {
                     </p>
 
                     <ul className={ns('Notice-actions')}>
+                    <li className={ns('Notice-actionItem Notice-actionItem--info')}>
+                    <button
+                      type="button"
+                      className={ns('Button Button--info Notice-learnMoreButton')}
+                      onClick={onConfigRequest}
+                          >
+                          {t(['consentNotice', 'learnMore'])}
+                          </button>
+                          </li>
                     {config.gdprCompliant &&
                     <li className={ns('Notice-actionItem Notice-actionItem--save')}>
                     <button
@@ -99,17 +108,7 @@ export default class ConsentNotice extends React.Component {
                           {t(['decline'])}
                           </button>
                           </li>
-                          <li className={ns('Notice-actionItem Notice-actionItem--info')}>
-                    <button
-                      type="button"
-                      className={ns('Button Button--info Notice-learnMoreButton')}
-                      onClick={onConfigRequest}
-                          >
-                          {t(['consentNotice', 'learnMore'])}
-                          </button>
-                          </li>
                     </ul>
-
                 </div>
 
                 {manager.changed &&
